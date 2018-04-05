@@ -43,6 +43,20 @@ public class serv extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setHeader("Access-Control-Allow-Origin", "*");
         try (PrintWriter out = response.getWriter()) {
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             /* TODO output your page here. You may use following sample code. */
             //File f = new File("E:\\Google Drive\\ifes\\Desenvolvimento Web\\Projeto Web\\webServiceIC\\src\\java\\prova.json").getAbsoluteFile();
             JSONObject json = new JSONObject();
