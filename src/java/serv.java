@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import Persistencia.JsonProvaFactory;
 import java.io.File;
 import java.io.FileReader;
 import org.json.*;
@@ -42,9 +43,17 @@ public class serv extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.setHeader("Access-Control-Allow-Origin", "*");
+        String tipoReq = request.getHeader("tipo");
+                //getParameter("tipo");
+        
         try (PrintWriter out = response.getWriter()) {
             
-            
+            switch(tipoReq){
+                case "tipoProva":
+                    JSONObject jsonTipoProva = JsonProvaFactory.jsonTipoProva();
+                    out.print(jsonTipoProva);
+                    break;
+            }
             
             
             
