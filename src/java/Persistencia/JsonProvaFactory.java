@@ -36,9 +36,14 @@ public class JsonProvaFactory {
         } catch ( JSONException ex){
             Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
+            if(json.length() == 0)
+                try {
+                    json.put("ERRO", "Erro ao recuperar tipos de provas");
+            } catch (JSONException ex) {
+                Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex);
+            }
             return json;
         }
-        
     }
     
 }
