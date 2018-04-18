@@ -81,7 +81,7 @@ public class DaoProva {
         ps = conexao.prepareStatement(sql);
         ps.setInt(1, provaId);
         ResultSet resultSet = ps.executeQuery();
-        List Quest = new ArrayList<>();
+        List quest = new ArrayList<>();
         while(resultSet.next()){
             Prova.Questao q = new Prova.Questao();
             q.setBody(resultSet.getString("body"));
@@ -92,7 +92,27 @@ public class DaoProva {
             q.setOptionE(resultSet.getString("optionE"));
             q.setAnswer(resultSet.getString("answer"));
             q.setImage(resultSet.getBytes("image"));
+            quest.add(q);
         }
-        return Quest;
+        return quest;
+    }
+
+    static List<List> listarProvas(String tipoProva) throws Exception {
+        Connection conexao = Conexao.getConexao();
+        String sql = "SELECT * FROM prova WHERE idTipoProva = (SELECT idTipoProva FROM tipoprova WHERE tipo LIKE ?)";
+        PreparedStatement ps;
+        ps = conexao.prepareStatement(sql);
+        ps.setString(1, tipoProva);
+        ResultSet rs = ps.executeQuery();
+        List<List> lista = new ArrayList();
+        while(rs.next()){
+            List prova = new ArrayList();
+            prova.add(rs.getString("idProva"));
+            prova.add(rs.getString("Nome"));
+            prova.add(rs.getString("QtdQuestoes"));
+            prova.add(rs.getString("idTipoProva"));
+            lista.add(prova);
+        }
+        return lista;
     }
 }

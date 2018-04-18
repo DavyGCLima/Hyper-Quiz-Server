@@ -45,5 +45,33 @@ public class JsonProvaFactory {
             return json;
         }
     }
+
+    public static JSONObject getListaProvas(String tipoProva) {
+        JSONObject json = new JSONObject();
+        try{
+            List<List> provas = DaoProva.listarProvas(tipoProva);
+            if(provas != null)
+                for(int i = 0; i < provas.size(); i++){
+                    json.append("prova", provas.get(i));
+                }
+        } catch (SQLException ex) {
+            Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                json.put("ERRO", "Erro ao recuperar lista de provas");
+            } catch (JSONException ex1) {
+                Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        } catch ( JSONException ex){
+            Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(json.length() == 0)
+                try {
+                    json.put("ERRO", "Erro ao recuperar lista de provas");
+            } catch (JSONException ex) {
+                Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return json;
+        }
+    }
     
 }

@@ -53,6 +53,11 @@ public class serv extends HttpServlet {
                     JSONObject jsonTipoProva = JsonProvaFactory.jsonTipoProva();
                     out.print(jsonTipoProva);
                     break;
+                case "listarProvas":
+                    String tipoProva = request.getHeader("tipoProva");
+                    JSONObject jsonListaProvas = JsonProvaFactory.getListaProvas(tipoProva);
+                    out.print(jsonListaProvas);
+                    break;
             }
             
             
