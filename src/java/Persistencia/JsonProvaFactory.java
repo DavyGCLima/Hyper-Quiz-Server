@@ -46,14 +46,28 @@ public class JsonProvaFactory {
         }
     }
 
+    /**
+     * 
+     * @param tipoProva
+     * @return Json contendo a 
+     */
     public static JSONObject getListaProvas(String tipoProva) {
         JSONObject json = new JSONObject();
         try{
             List<List> provas = DaoProva.listarProvas(tipoProva);
             if(provas != null)
-                for(int i = 0; i < provas.size(); i++){
-                    json.append("prova", provas.get(i));
+                //le uma linaha e armazena no json
+                for(List linha : provas){
+                    JSONObject linhaJson = new JSONObject();
+                    linhaJson.put("idProva", linha.get(0));
+                    linhaJson.put("nome", linha.get(1));
+                    linhaJson.put("qtdQuestoes", linha.get(2));
+                    linhaJson.put("idTipoProva", linha.get(3));
+                    json.append("prova", linhaJson);
                 }
+//                for(int i = 0; i < provas.size(); i++){
+//                    json.append("prova", provas.get(i));
+//                }
         } catch (SQLException ex) {
             Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex);
             try {
@@ -73,5 +87,28 @@ public class JsonProvaFactory {
             return json;
         }
     }
+
     
+    public static JSONObject getProva(String idProva){
+        JSONObject json = new JSONObject();
+        try {
+            List<Prova.Questao> questoes = DaoProva.buscarQuestoesProva(Integer.valueOf(idProva));
+            List dados = DaoProva.buscarDadosProva(Integer.valueOf(idProva));
+            if(questoes != null && questoes.size() > 0 && dados != null && dados.size() > 0){
+                json.put("name", dados.get(1));
+                json.put("numQuests", dados.get(2));
+                for(Prova.Questao item : questoes){
+                    JSONObject questao = new JSONObject(item);
+                    json.append("quests", questao);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return json;
+    }
+    
+    
+    // {"tipo":["ENAD","ENEM"]}
+    //{"prova":[{"idProva":"1","idTipoProva":"1","nome":"Prova teste","qtdQuestoes":"3"},{"idProva":"2","idTipoProva":"1","nome":"P`rova Teste 2","qtdQuestoes":"1"}]}
 }
