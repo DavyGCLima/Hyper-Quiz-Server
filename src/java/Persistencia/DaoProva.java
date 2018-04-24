@@ -27,9 +27,12 @@ public class DaoProva {
             preparedStatement = conexao.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
             List tipos = new ArrayList<>();
+            
             while(resultSet.next()){
                 tipos.add(resultSet.getString("Tipo"));
             }
+            preparedStatement.close();
+            conexao.close();
             return tipos;
         }
             return null;
@@ -62,9 +65,15 @@ public class DaoProva {
             q.setOptionD(resultSet.getString("optionD"));
             q.setOptionE(resultSet.getString("optionE"));
             q.setAnswer(resultSet.getString("answer"));
-            q.setImage(resultSet.getBytes("image"));
+            if(resultSet.getString("image") != null){
+                String img = resultSet.getString("image");
+                q.setImage(img);
+            }else
+                q.setImage("");
             quest.add(q);
         }
+        ps.close();
+        conexao.close();
         return quest;
     }
 
@@ -84,6 +93,8 @@ public class DaoProva {
             prova.add(rs.getString("idTipoProva"));
             lista.add(prova);
         }
+        ps.close();
+        conexao.close();
         return lista;
     }
     
@@ -102,6 +113,8 @@ public class DaoProva {
             lista.add(rs.getString("idProva"));
             return lista;
         }
+        ps.close();
+         conexao.close();
         return null;
     }
 }

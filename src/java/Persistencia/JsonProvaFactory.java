@@ -1,6 +1,7 @@
 package Persistencia;
 
 import Persistencia.DaoProva;
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -47,9 +48,9 @@ public class JsonProvaFactory {
     }
 
     /**
-     * 
-     * @param tipoProva
-     * @return Json contendo a 
+     * Lista as provas da base de dados de acordo com o tipo de prova
+     * @param tipoProva id do tipo de prova
+     * @return Json contendo a lista de provas da base de dados
      */
     public static JSONObject getListaProvas(String tipoProva) {
         JSONObject json = new JSONObject();
@@ -88,7 +89,12 @@ public class JsonProvaFactory {
         }
     }
 
-    
+    /**
+     * Retorna um Json contendo todos os dados de uma prova, incluindo as questões\n
+     * que o compoem
+     * @param idProva
+     * @return JSONObject conendo a prova
+     */
     public static JSONObject getProva(String idProva){
         JSONObject json = new JSONObject();
         try {
@@ -103,12 +109,10 @@ public class JsonProvaFactory {
                 }
             }
         } catch (Exception ex) {
+            printStackTrace();
             Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
         return json;
     }
     
-    
-    // {"tipo":["ENAD","ENEM"]}
-    //{"prova":[{"idProva":"1","idTipoProva":"1","nome":"Prova teste","qtdQuestoes":"3"},{"idProva":"2","idTipoProva":"1","nome":"P`rova Teste 2","qtdQuestoes":"1"}]}
 }

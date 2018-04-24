@@ -58,7 +58,8 @@ public class Prova implements Serializable{
         protected String optionD;
         protected String optionE;
         protected String answer;
-        protected byte[] image;
+        //protected byte[] image;
+        protected String image;
 
         public Questao() {
 
@@ -92,15 +93,19 @@ public class Prova implements Serializable{
             return answer;
         }
 
-        public byte[] getImage() {
-            if (image != null) {
-                //ByteArrayOutputStream out = new ByteArrayOutputStream();
-                //image.compress(Bitmap.CompressFormat.JPEG, 100, out);
-                //byte[] img = out.toByteArray();
-                //return img;
-                return image;
-            }else
-                return null;
+//        public byte[] getImage() {
+//            if (image != null) {
+//                //ByteArrayOutputStream out = new ByteArrayOutputStream();
+//                //image.compress(Bitmap.CompressFormat.JPEG, 100, out);
+//                //byte[] img = out.toByteArray();
+//                //return img;
+//                return image;
+//            }else
+//                return null;
+//        }
+
+        public String getImage() {
+            return image;
         }
         
         public void setBody(String body) {
@@ -131,13 +136,14 @@ public class Prova implements Serializable{
             this.answer = answer;
         }
 
-        public void setImage(byte[] image) throws Exception {
+        public void setImage(String image) throws Exception {
+                if(image.equals(""))
+                    this.image = null;
+                //byte[] decode = Base64.getDecoder().decode(image);
+                //Bitmap bitmap = BitmapFactory.decodeByteArray(decode, 0, decode.length);
+            //this.image = bitmap;
+            //this.image = decode;
             this.image = image;
-            /*if(image.equals(""))
-                this.image = null;
-            byte[] decode = Base64.getDecoder().decode(image);
-            this.image = decode;
-            */
         }
     }
 }
