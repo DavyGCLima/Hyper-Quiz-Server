@@ -1,5 +1,7 @@
 package Persistencia;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -55,23 +57,28 @@ public class DaoProva {
         ps = conexao.prepareStatement(sql);
         ps.setInt(1, provaId);
         ResultSet resultSet = ps.executeQuery();
+        FileWriter arq = new FileWriter("D:\\Projetos Android\\webServiceIc\\resultset.txt");
+        PrintWriter grava = new PrintWriter(arq);
         List<Prova.Questao> quest = new ArrayList<>();
         while(resultSet.next()){
             Prova.Questao q = new Prova.Questao();
-            q.setBody(resultSet.getString("body"));
-            q.setOptionA(resultSet.getString("optionA"));
-            q.setOptionB(resultSet.getString("optionB"));
-            q.setOptionC(resultSet.getString("optionC"));
-            q.setOptionD(resultSet.getString("optionD"));
-            q.setOptionE(resultSet.getString("optionE"));
-            q.setAnswer(resultSet.getString("answer"));
+            q.setBody(resultSet.getString("body")); grava.println("Body === "+resultSet.getString("body"));grava.println();
+            q.setOptionA(resultSet.getString("optionA"));grava.println("optionA === "+resultSet.getString("optionA"));grava.println();
+            q.setOptionB(resultSet.getString("optionB"));grava.println("optionB ==="+resultSet.getString("optionB"));grava.println();
+            q.setOptionC(resultSet.getString("optionC"));grava.println("optionC === "+resultSet.getString("optionC"));grava.println();
+            q.setOptionD(resultSet.getString("optionD"));grava.println("optionD === "+resultSet.getString("optionD"));grava.println();
+            q.setOptionE(resultSet.getString("optionE"));grava.println("optionE === "+resultSet.getString("optionE"));grava.println();
+            q.setAnswer(resultSet.getString("answer"));grava.printf("Answer === "+resultSet.getString("answer"));grava.println();
+            grava.println("numero >>>>>>>>>> "+resultSet.getString("numero"));grava.println();
             if(resultSet.getString("image") != null){
-                String img = resultSet.getString("image");
-                q.setImage(img);
-            }else
-                q.setImage("");
+                String imgId = resultSet.getString("idQuestoes");grava.println("Image === "+resultSet.getString("image").length());grava.println();
+                q.setImage(imgId);
+            }else{
+                q.setImage("");grava.println("img null");grava.println("===============");grava.println();
+            }
             quest.add(q);
         }
+        arq.close();
         ps.close();
         conexao.close();
         return quest;
@@ -116,5 +123,16 @@ public class DaoProva {
         ps.close();
          conexao.close();
         return null;
+    }
+
+    static String buscarImagemQuestao(String imageId)throws Exception {
+        Connection conexao = Conexao.getConexao();
+        String sql = "SELECT image FROM questoes WHERE idQuestoes = ?";
+        PreparedStatement ps;
+        ps = conexao.prepareStatement(sql);
+        ps.setInt(1, Integer.valueOf(imageId));
+        ResultSet rs = ps.executeQuery();
+        rs.first();
+        return rs.getString("image");
     }
 }

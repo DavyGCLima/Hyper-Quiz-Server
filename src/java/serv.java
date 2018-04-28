@@ -1,25 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import Persistencia.JsonProvaFactory;
-import java.io.File;
-import java.io.FileReader;
 import org.json.*;
-import org.apache.commons.io.FileUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Base64;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONException;
 
 /**
  *
@@ -65,6 +53,12 @@ public class serv extends HttpServlet {
                     JSONObject jsonListaProvas = JsonProvaFactory.getListaProvas(tipoProva);
                     out.print(jsonListaProvas);
                     System.out.println("listarProvas ===>"+jsonListaProvas);
+                    break;
+                case "getImageQuest":
+                    String imgId = request.getHeader("imageId");
+                    JSONObject imagem = JsonProvaFactory.getImagem(imgId);
+                    out.print(imagem);
+                    System.out.println("imagem ===>"+imagem);
                     break;
             }
     }

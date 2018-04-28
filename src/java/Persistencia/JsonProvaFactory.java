@@ -115,4 +115,20 @@ public class JsonProvaFactory {
         return json;
     }
     
+    public static JSONObject getImagem(String imageId){
+        JSONObject json = new JSONObject();
+        try {
+            String img = DaoProva.buscarImagemQuestao(imageId);
+            json.put("img", img);
+        } catch (Exception ex) {
+            Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                json.put("ERRO", "Não foi possivel recuperar a imagem");
+            } catch (JSONException ex1) {
+                Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }
+        return json;
+    }
+    
 }
