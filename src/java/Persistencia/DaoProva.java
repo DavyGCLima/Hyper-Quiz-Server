@@ -135,4 +135,16 @@ public class DaoProva {
         rs.first();
         return rs.getString("image");
     }
+
+    static boolean validarLogin(String email, String senha)throws Exception {
+        Connection conexao = Conexao.getConexao();
+        String sql = "SELECT EXISTS ( SELECT u.email, u.senha FROM usuario u WHERE u.email like ? and u.senha = ? ) as 'validacao'";
+        PreparedStatement ps;
+        ps = conexao.prepareStatement(sql);
+        ps.setString(1, email);
+        ps.setString(2, senha);
+        ResultSet rs = ps.executeQuery();
+        rs.first();
+        return rs.getString("validacao").equals("1");
+    }
 }

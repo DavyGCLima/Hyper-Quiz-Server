@@ -130,5 +130,15 @@ public class JsonProvaFactory {
         }
         return json;
     }
+
+    public static boolean validarLogin(String email, String senha) {
+        try {
+            return DaoProva.validarLogin(email, senha);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
     
 }

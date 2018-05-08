@@ -60,6 +60,13 @@ public class serv extends HttpServlet {
                     out.print(imagem);
                     System.out.println("imagem ===>"+imagem);
                     break;
+                case "login":
+                    String email = request.getHeader("email");
+                    String senha = request.getHeader("senha");
+                    boolean validaAcesso = JsonProvaFactory.validarLogin(email, senha);
+                    out.print(validaAcesso);
+                    System.out.println("Acesso de :"+email+" : "+validaAcesso);
+                    break;
             }
     }
 
