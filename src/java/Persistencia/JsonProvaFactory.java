@@ -140,5 +140,17 @@ public class JsonProvaFactory {
             return false;
         }
     }
+
+    public static String cadastrarNovoUsuario(String nome, String emailC, String senhaC) {
+        try{
+            return DaoProva.cadastrarNovoUsuario(nome, emailC, senhaC);
+        }catch (Exception ex) {
+            if(ex instanceof com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException ){
+                return "Usuário já existe";
+            }else
+                ex.printStackTrace();
+            return "Houve um erro ao tentar efeturar o cadastro";
+        }
+    }
     
 }

@@ -84,7 +84,14 @@ public class DaoProva {
         return quest;
     }
 
-    public static List<List> listarProvas(String tipoProva)throws Exception {
+    /**
+     * Consulta todas as provas de um determinado tipo
+     * @param tipoProva Tipo de prova a ser consultado
+     * @return lista contendo todas as ptovas
+     * @throws java.sql.SQLException Ocorre quando há alguma inconsistencia na 
+     * base de dados de acorodo com os paramaetros passados
+     */
+    public static List<List> listarProvas(String tipoProva) throws SQLException, Exception {
         Connection conexao = Conexao.getConexao();
         String sql = "SELECT * FROM prova WHERE idTipoProva = (SELECT idTipoProva FROM tipoprova WHERE tipo LIKE ?)";
         PreparedStatement ps;
@@ -105,7 +112,15 @@ public class DaoProva {
         return lista;
     }
     
-    public static List buscarDadosProva(int idProva)throws Exception {
+    /**
+     * Busca na base de dados de uma questão, isso inclui todos os textos e id's 
+     * das imagens relacionadas as questões
+     * @param idProva id da prova
+     * @return lista contendo todas as questões da prova em texto acompanhadas 
+     * dos id's das imagens
+     * @throws Exception 
+     */
+    public static List buscarDadosProva(int idProva) throws Exception{
         Connection conexao = Conexao.getConexao();
         String sql = "SELECT idProva, Nome, QtdQuestoes, idProva FROM prova WHERE idProva = ?";
         PreparedStatement ps;
@@ -146,5 +161,23 @@ public class DaoProva {
         ResultSet rs = ps.executeQuery();
         rs.first();
         return rs.getString("validacao").equals("1");
+    }
+
+    static String cadastrarNovoUsuario(String nome, String emailC, String senhaC) throws Exception {
+        Connection conexao = Conexao.getConexao();
+        conexao.setAutoCommit(false);
+        String sql = "INSERT INTO usuario(email, nome, senha) VALUES(?,?,?)";
+        PreparedStatement ps;
+        ps = conexao.prepareStatement(sql);
+        ps.setString(1, emailC);
+        ps.setString(2, nome);
+        ps.setString(3, senhaC);
+        int executeUpdate = ps.executeUpdate();
+        conexao.commit();
+        conexao.setAutoCommit(true);
+        if(executeUpdate == 1)
+            return "Cadastrado";
+        else
+            return "Não foi possivel realizar o cadastro";
     }
 }

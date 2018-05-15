@@ -67,6 +67,15 @@ public class serv extends HttpServlet {
                     out.print(validaAcesso);
                     System.out.println("Acesso de :"+email+" : "+validaAcesso);
                     break;
+                case "cadastro":
+                    String emailC = request.getHeader("email");
+                    String senhaC = request.getHeader("senha");
+                    String nome = request.getHeader("nome");
+                    String result = JsonProvaFactory.cadastrarNovoUsuario(nome, emailC, senhaC);
+                    out.print(result);
+                    System.out.println("cadastro de :"+emailC+" : "+result);
+                    break;
+                 
             }
     }
 
