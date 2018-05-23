@@ -23,19 +23,19 @@ public class DaoProva {
     public static List<String> buscarTipoProva() throws SQLException, Exception{
         Connection conexao = Conexao.getConexao();
             if(conexao != null){
-            String sql = "SELECT Tipo FROM TipoProva";
+                String sql = "SELECT Tipo FROM TipoProva";
 
-            PreparedStatement preparedStatement;
-            preparedStatement = conexao.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            List tipos = new ArrayList<>();
-            
-            while(resultSet.next()){
-                tipos.add(resultSet.getString("Tipo"));
-            }
-            preparedStatement.close();
-            conexao.close();
-            return tipos;
+                PreparedStatement preparedStatement;
+                preparedStatement = conexao.prepareStatement(sql);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                List tipos = new ArrayList<>();
+
+                while(resultSet.next()){
+                    tipos.add(resultSet.getString("Tipo"));
+                }
+                preparedStatement.close();
+                conexao.close();
+                return tipos;
         }
             return null;
     }
@@ -179,5 +179,26 @@ public class DaoProva {
             return "Cadastrado";
         else
             return "Não foi possivel realizar o cadastro";
+    }
+
+    static String salvarDadosProva(String acertos, String erros, String email) throws SQLException, Exception {
+        Connection conexao = Conexao.getConexao();
+        conexao.setAutoCommit(false);
+        
+        String sql = "UPDATE usuario SET numQuestAcert = numQuestAcert + ?,  "
+                + "numQuestErr =  numQuestErr + ?, numProv = numProv + 1"
+                + " WHERE email = ?";
+        PreparedStatement ps;
+        ps = conexao.prepareStatement(sql);
+        ps.setInt(1, Integer.parseInt(acertos));
+        ps.setInt(2, Integer.parseInt(erros));
+        ps.setString(3, email);
+        int result = ps.executeUpdate();
+        conexao.commit();
+        conexao.setAutoCommit(true);
+        if(result == 1)
+            return "ok";
+        else
+            return "Não foi possivel atualizar os dados do usuário com relação à prova";
     }
 }

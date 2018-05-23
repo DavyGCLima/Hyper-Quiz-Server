@@ -152,5 +152,14 @@ public class JsonProvaFactory {
             return "Houve um erro ao tentar efeturar o cadastro";
         }
     }
+
+    public static String salvarDadosProva(String acertos, String erros, String email) {
+       try{
+           return DaoProva.salvarDadosProva(acertos, erros, email);
+       }catch (Exception ex) {
+           ex.printStackTrace();
+            return "Houve um erro ao tentar efeturar o cadastro";
+        }
+    }
     
 }

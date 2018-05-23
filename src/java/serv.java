@@ -75,6 +75,16 @@ public class serv extends HttpServlet {
                     out.print(result);
                     System.out.println("cadastro de :"+emailC+" : "+result);
                     break;
+                case "atualizarEstatisticasUsuario":
+                    String acertos = request.getHeader("acertos");
+                    String erros = request.getHeader("erros");
+                    String emailAt = request.getHeader("email");
+                    String resultAt = JsonProvaFactory.salvarDadosProva(acertos, erros, emailAt);
+                    System.out.println("INFORME email "+emailAt+" acertos "+acertos
+                            +" erros "+erros+ "result "+resultAt);
+                    out.print(resultAt);
+                    break;
+                 
                  
             }
     }
