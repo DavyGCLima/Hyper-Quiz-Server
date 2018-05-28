@@ -11,12 +11,14 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Enumeration;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import org.json.JSONObject;
 
 /**
@@ -73,14 +75,14 @@ public class acessFilter implements Filter {
         // the rest of the filter chain is invoked.
         // For example, a logging filter might log the attributes on the
         // request object after the request has been processed. 
-        /*
+        
 	for (Enumeration en = request.getAttributeNames(); en.hasMoreElements(); ) {
 	    String name = (String)en.nextElement();
 	    Object value = request.getAttribute(name);
 	    log("attribute: " + name + "=" + value.toString());
 
 	}
-         */
+         
         // For example, a filter might append something to the response.
         /*
 	PrintWriter respOut = new PrintWriter(response.getWriter());
@@ -102,26 +104,32 @@ public class acessFilter implements Filter {
             throws IOException, ServletException {
         
         doBeforeProcessing(request, response);
-        
+        HttpServletRequest req = (HttpServletRequest)request;
         Throwable problem = null;
         try {
             // Make authentication from user
-            String token = request.getParameter("token");
+            
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+        
+            String token = req.getHeader("token");
             JSONObject jsonToken;
             PrintWriter out = response.getWriter();
             
             if(token != null){
                 
-                if(AcessTokenControl.isValidToken(token).equals("Token valido"))
+                String result = AcessTokenControl.isValidToken(token);
+                if(result.equals("Token valido"))
                     chain.doFilter(request, response);
-                else if(AcessTokenControl.isValidToken(token).equals("Token invalido")){
+                else if(result.equals("Token invalido")){
                     jsonToken = AcessTokenControl.refreshToken(token);
                     out.print(jsonToken);
                 }
                 
             }else{
-                String email = request.getParameter("email");
-                String senha = request.getParameter("senha");
+                
+                String email = req.getHeader("email");
+                String senha = req.getHeader("senha");
                 if(JsonProvaFactory.validarLogin(email, senha)){
                     JSONObject newJsonToken = AcessTokenControl.newToken(email, senha);
                     out.print(newJsonToken);

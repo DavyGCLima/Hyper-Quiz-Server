@@ -20,13 +20,16 @@ public class AcessTokenControl {
         CallableStatement call = con.prepareCall("call isValidToken(?)");
         call.setString(1, token);
         ResultSet result = call.executeQuery();
-        return result.getString("result");
+        result.first();
+        String r = result.getString("result");
+        System.out.println(" isValidToken Result: "+r);
+        return r;
     }
 
     public static JSONObject refreshToken(String token) throws Exception {
         String newToken = randomString.nextString();
         Connection con = Conexao.getConexao();
-        String sql = "update autenticacao set token = ?, dataExpira = curdate(), dataRefresh = curdate()"
+        String sql = "update autenticacao set token = ?, dataExpira = now(), dataRefresh = now()"
                 + "where token = ?";
         PreparedStatement sp = con.prepareStatement(sql);
         sp.setString(1, newToken);
@@ -34,7 +37,7 @@ public class AcessTokenControl {
         int executeUpdate = sp.executeUpdate();
         if(executeUpdate == 1){
             JSONObject json = new JSONObject();
-            json.put("token", newToken);
+            json.put("newToken", newToken);
             return json;
         }
         else 
@@ -52,13 +55,14 @@ public class AcessTokenControl {
         rs.first();
         String id = rs.getString("idUsuario");
         
-        String sqlInsert = "insert into autenticacao set idUsuario = ?, email = ?, "
-                + "token = ?, dataExpira = curdate()";
+        String sqlInsert = "insert into autenticacao set idUsuario = ?, "
+                + "token = ?, dataExpira = now()";
         sp = con.prepareStatement(sqlInsert);
         sp.setString(1, id);
-        sp.setString(2, email);
-        sp.setString(3, token);
+        sp.setString(2, token);
         int result = sp.executeUpdate();
+        
+        System.out.println("NEWTOKEN: "+token + "usuario: "+id);
         
         if(result == 1){
            JSONObject json = new JSONObject();
