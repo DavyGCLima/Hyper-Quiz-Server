@@ -161,5 +161,28 @@ public class JsonProvaFactory {
             return "Houve um erro ao tentar efeturar o cadastro";
         }
     }
+
+    public static JSONObject getUserData(String id) {
+        JSONObject json = new JSONObject();
+        try {
+            String[] dados = DaoProva.buscarDadosUsuario(id);
+            json.put("acertos", dados[0]);
+            json.put("erros", dados[1]);
+            return json;
+        } catch (Exception ex) {
+            Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex);
+            if(ex.getMessage().equals("Dados não encontrados")){
+                try {
+                    json.put("error", "Dados não encontrados");
+                    return json;
+                } catch (JSONException ex1) {
+                    Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+                    
+            }
+            return json;
+        }
+        
+    }
     
 }

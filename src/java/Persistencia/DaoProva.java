@@ -201,4 +201,23 @@ public class DaoProva {
         else
             return "Não foi possivel atualizar os dados do usuário com relação à prova";
     }
+
+    static String[] buscarDadosUsuario(String id) throws Exception {
+        Connection conexao = Conexao.getConexao();
+        conexao.setAutoCommit(false);
+        
+        String sql = "SELECT numQuestAcert, numQuestErr FROM usuario WHERE idUsuario = ?";
+        
+        PreparedStatement ps;
+        ps = conexao.prepareStatement(sql);
+        ps.setInt(1, Integer.valueOf(id));
+        ResultSet executeQuery = ps.executeQuery();
+        String[] retorno = new String[2];
+        if(executeQuery.first()){
+            retorno[0] = executeQuery.getString(1);
+            retorno[1] = executeQuery.getString(2);
+            return retorno;
+        }else
+            throw new Exception("Dados não encontrados");
+    }
 }

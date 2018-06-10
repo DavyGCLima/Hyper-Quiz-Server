@@ -32,7 +32,8 @@ public class serv extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setHeader("Access-Control-Allow-Origin", "*");
         String tipoReq = request.getHeader("tipo");
-                //getParameter("tipo");
+        String req  = request.getParameter("tipo");
+        System.out.println("Tipo: "+tipoReq+" req: "+req);
         
         /*try*/ PrintWriter out = response.getWriter(); //{
             System.out.println("REQUEISIÇÃO: "+tipoReq);
@@ -60,13 +61,12 @@ public class serv extends HttpServlet {
                     out.print(imagem);
                     System.out.println("imagem ===>"+imagem);
                     break;
-//                case "login":
-//                    String email = request.getHeader("email");
-//                    String senha = request.getHeader("senha");
-//                    boolean validaAcesso = JsonProvaFactory.validarLogin(email, senha);
-//                    out.print(validaAcesso);
-//                    System.out.println("Acesso de :"+email+" : "+validaAcesso);
-//                    break;
+                case "getDadosUsuario":
+                    String id = request.getHeader("idUsuario");
+                    JSONObject jsonDataUser = JsonProvaFactory.getUserData(id);
+                    System.out.println("DATAUSER "+id+" data:"+jsonDataUser);
+                    out.print(jsonDataUser);
+                    break;
                 case "cadastro":
                     String emailC = request.getHeader("email");
                     String senhaC = request.getHeader("senha");
