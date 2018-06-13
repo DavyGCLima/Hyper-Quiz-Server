@@ -136,7 +136,7 @@ public class DaoProva {
             return lista;
         }
         ps.close();
-         conexao.close();
+        conexao.close();
         return null;
     }
 
@@ -148,7 +148,9 @@ public class DaoProva {
         ps.setInt(1, Integer.valueOf(imageId));
         ResultSet rs = ps.executeQuery();
         rs.first();
-        return rs.getString("image");
+        String result = rs.getString("image");
+        conexao.close();
+        return result;
     }
 
     static boolean validarLogin(String email, String senha)throws Exception {
@@ -160,7 +162,9 @@ public class DaoProva {
         ps.setString(2, senha);
         ResultSet rs = ps.executeQuery();
         rs.first();
-        return rs.getString("validacao").equals("1");
+        boolean res = rs.getString("validacao").equals("1");
+        conexao.close();
+        return res;
     }
 
     static String cadastrarNovoUsuario(String nome, String emailC, String senhaC) throws Exception {
@@ -175,6 +179,7 @@ public class DaoProva {
         int executeUpdate = ps.executeUpdate();
         conexao.commit();
         conexao.setAutoCommit(true);
+        conexao.close();
         if(executeUpdate == 1)
             return "Cadastrado";
         else
@@ -196,28 +201,33 @@ public class DaoProva {
         int result = ps.executeUpdate();
         conexao.commit();
         conexao.setAutoCommit(true);
+        conexao.close();
         if(result == 1)
             return "ok";
         else
             return "Não foi possivel atualizar os dados do usuário com relação à prova";
     }
 
-    static String[] buscarDadosUsuario(String id) throws Exception {
+    static String[] buscarDadosUsuario(String email) throws Exception {
         Connection conexao = Conexao.getConexao();
         conexao.setAutoCommit(false);
         
-        String sql = "SELECT numQuestAcert, numQuestErr FROM usuario WHERE idUsuario = ?";
+        String sql = "SELECT numQuestAcert, numQuestErr FROM usuario WHERE email like ?";
         
         PreparedStatement ps;
         ps = conexao.prepareStatement(sql);
-        ps.setInt(1, Integer.valueOf(id));
+        ps.setString(1, email);
         ResultSet executeQuery = ps.executeQuery();
         String[] retorno = new String[2];
         if(executeQuery.first()){
             retorno[0] = executeQuery.getString(1);
             retorno[1] = executeQuery.getString(2);
+            conexao.close();
             return retorno;
-        }else
+        }else{
+            conexao.close();
             throw new Exception("Dados não encontrados");
+        }
+        
     }
 }

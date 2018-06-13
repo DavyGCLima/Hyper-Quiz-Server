@@ -162,10 +162,10 @@ public class JsonProvaFactory {
         }
     }
 
-    public static JSONObject getUserData(String id) {
+    public static JSONObject getUserData(String email) {
         JSONObject json = new JSONObject();
         try {
-            String[] dados = DaoProva.buscarDadosUsuario(id);
+            String[] dados = DaoProva.buscarDadosUsuario(email);
             json.put("acertos", dados[0]);
             json.put("erros", dados[1]);
             return json;

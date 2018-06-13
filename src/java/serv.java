@@ -62,9 +62,9 @@ public class serv extends HttpServlet {
                     System.out.println("imagem ===>"+imagem);
                     break;
                 case "getDadosUsuario":
-                    String id = request.getHeader("idUsuario");
-                    JSONObject jsonDataUser = JsonProvaFactory.getUserData(id);
-                    System.out.println("DATAUSER "+id+" data:"+jsonDataUser);
+                    String email = request.getHeader("email");
+                    JSONObject jsonDataUser = JsonProvaFactory.getUserData(email);
+                    System.out.println("DATAUSER "+email+" data:"+jsonDataUser);
                     out.print(jsonDataUser);
                     break;
                 case "cadastro":

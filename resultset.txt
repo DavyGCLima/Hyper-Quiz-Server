@@ -1,52 +1,389 @@
 Body === A afirmação a ponderação é hoje a mais desmoralizada das virtudes deve ser entendida, no contexto, como 
 
-optionA === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+optionA === detenção de lideranças populares por crimes de subversão.
 
-optionB ===a valorização do discernimento público que permite distinguir, metaforicamente falando, um abacaxi de um pepino.
+optionB ===prorrogação das restrições advindas dos atos institucionais.
 
-optionC === a constatação de que está ocorrendo uma negação de análises mais equilibradas, por conta da violência dos radicalismos.
+optionC === prorrogação das restrições advindas dos atos institucionais.
 
-optionD === uma forma de repúdio às redes sociais, quando estas expõem sem subterfúgios nossos comportamentos opressivos ancestrais.
+optionD === busca de prazeres efêmeros.
 
-optionE === uma crítica violenta, dirigida àqueles que entendem o equilíbrio de julgamento como subproduto da perplexidade.
+optionE === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
 
-Answer === a
+Answer === e
 numero >>>>>>>>>> 1
 
 Image === 125492
 
-Body === Ao se referir, metaforicamente, às duas ações do fogo selvagem (3° parágrafo), o autor do texto coloca em evidência
+Body === Sentimos que toda satisfação de nossos desejos advinda do mundo assemelha-se à esmola que mantém hoje o mendigo vivo, porém prolonga amanhã a sua fome. A resignação, ao contrário, assemelha-se à fortuna herdada: livra o herdeiro para sempre de todas as preocupações. SCHOPENHAUER, A. Aforismo para a sabedoria da vida. São Paulo: Martins Fontes, 2005. O trecho destaca uma ideia remanescente de uma tradição filosófica ocidental, segundo a qual a felicidade se mostra indissociavelmente ligada à
 
-optionA === o aparente desacordo de ações contraditórias que, de fato, se complementam num momento de ponderação.
+optionA === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
 
-optionB ===a natureza violenta de ações e reações que se regem pelos mesmos paradigmas de brutalidade.
+optionB ===a valorização do discernimento público que permite distinguir, metaforicamente falando, um abacaxi de um pepino.
 
-optionC === a contraposição entre ideais que são defendidos com argumentos igualmente ponderáveis.
+optionC === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionD === presença de políticos com trajetórias no regime autoritário.
+
+optionE === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+Answer === a
+numero >>>>>>>>>> 2
+
+img null
+===============
+
+Body === A afirmação a ponderação é hoje a mais desmoralizada das virtudes deve ser entendida, no contexto, como 
+
+optionA === detenção de lideranças populares por crimes de subversão.
+
+optionB ===uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionC === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
 
 optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
 
-optionE === o avanço e o retrocesso simultâneos que as ações ponderadas acabam por impor ao ritmo da história contemporânea.
+optionE === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+Answer === d
+numero >>>>>>>>>> 3
+
+img null
+===============
+
+Body === Batizado por Tancredo Neves de “Nova República”, o período que marca o reencontro do Brasil com os governos civis e a democracia ainda não completou seu quinto ano e já viveu dias de grande comoção. Começou com a tragédia de Tancredo, seguiu pela euforia do Plano Cruzado, conheceu as depressões da inflação e das ameaças da hiperinflação e desembocou na movimentação que antecede as primeiras eleições diretas para presidente em 29 anos.
+
+optionA === a valorização do discernimento público que permite distinguir, metaforicamente falando, um abacaxi de um pepino.
+
+optionB ===presença de políticos com trajetórias no regime autoritário.
+
+optionC === a valorização do discernimento público que permite distinguir, metaforicamente falando, um abacaxi de um pepino.
+
+optionD === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionE === prorrogação das restrições advindas dos atos institucionais.
+
+Answer === d
+numero >>>>>>>>>> 4
+
+Image === 125492
+
+Body === Sentimos que toda satisfação de nossos desejos advinda do mundo assemelha-se à esmola que mantém hoje o mendigo vivo, porém prolonga amanhã a sua fome. A resignação, ao contrário, assemelha-se à fortuna herdada: livra o herdeiro para sempre de todas as preocupações. SCHOPENHAUER, A. Aforismo para a sabedoria da vida. São Paulo: Martins Fontes, 2005. O trecho destaca uma ideia remanescente de uma tradição filosófica ocidental, segundo a qual a felicidade se mostra indissociavelmente ligada à
+
+optionA === presença de políticos com trajetórias no regime autoritário.
+
+optionB ===a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionC === consagração de relacionamentos afetivos.
+
+optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionE === detenção de lideranças populares por crimes de subversão.
 
 Answer === c
-numero >>>>>>>>>> 2
+numero >>>>>>>>>> 5
+
+img null
+===============
+
+Body === A afirmação a ponderação é hoje a mais desmoralizada das virtudes deve ser entendida, no contexto, como 
+
+optionA === detenção de lideranças populares por crimes de subversão.
+
+optionB ===uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionC === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionE === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+Answer === d
+numero >>>>>>>>>> 6
 
 img null
 ===============
 
 Body === Sentimos que toda satisfação de nossos desejos advinda do mundo assemelha-se à esmola que mantém hoje o mendigo vivo, porém prolonga amanhã a sua fome. A resignação, ao contrário, assemelha-se à fortuna herdada: livra o herdeiro para sempre de todas as preocupações. SCHOPENHAUER, A. Aforismo para a sabedoria da vida. São Paulo: Martins Fontes, 2005. O trecho destaca uma ideia remanescente de uma tradição filosófica ocidental, segundo a qual a felicidade se mostra indissociavelmente ligada à
 
-optionA === consagração de relacionamentos afetivos.
+optionA === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
 
-optionB ===administração da independência interior.
+optionB ===a valorização do discernimento público que permite distinguir, metaforicamente falando, um abacaxi de um pepino.
 
-optionC === fugacidade do conhecimento empírico.
+optionC === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
 
-optionD === liberdade de expressão religiosa.
+optionD === presença de políticos com trajetórias no regime autoritário.
 
-optionE === busca de prazeres efêmeros.
+optionE === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
 
-Answer === e
-numero >>>>>>>>>> 3
+Answer === a
+numero >>>>>>>>>> 7
+
+Image === 125492
+
+Body === A afirmação a ponderação é hoje a mais desmoralizada das virtudes deve ser entendida, no contexto, como 
+
+optionA === detenção de lideranças populares por crimes de subversão.
+
+optionB ===uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionC === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionE === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+Answer === d
+numero >>>>>>>>>> 8
+
+img null
+===============
+
+Body === Sentimos que toda satisfação de nossos desejos advinda do mundo assemelha-se à esmola que mantém hoje o mendigo vivo, porém prolonga amanhã a sua fome. A resignação, ao contrário, assemelha-se à fortuna herdada: livra o herdeiro para sempre de todas as preocupações. SCHOPENHAUER, A. Aforismo para a sabedoria da vida. São Paulo: Martins Fontes, 2005. O trecho destaca uma ideia remanescente de uma tradição filosófica ocidental, segundo a qual a felicidade se mostra indissociavelmente ligada à
+
+optionA === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionB ===a valorização do discernimento público que permite distinguir, metaforicamente falando, um abacaxi de um pepino.
+
+optionC === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionD === presença de políticos com trajetórias no regime autoritário.
+
+optionE === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+Answer === a
+numero >>>>>>>>>> 9
+
+img null
+===============
+
+Body === A afirmação a ponderação é hoje a mais desmoralizada das virtudes deve ser entendida, no contexto, como 
+
+optionA === detenção de lideranças populares por crimes de subversão.
+
+optionB ===uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionC === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionE === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+Answer === d
+numero >>>>>>>>>> 10
+
+img null
+===============
+
+Body === Sentimos que toda satisfação de nossos desejos advinda do mundo assemelha-se à esmola que mantém hoje o mendigo vivo, porém prolonga amanhã a sua fome. A resignação, ao contrário, assemelha-se à fortuna herdada: livra o herdeiro para sempre de todas as preocupações. SCHOPENHAUER, A. Aforismo para a sabedoria da vida. São Paulo: Martins Fontes, 2005. O trecho destaca uma ideia remanescente de uma tradição filosófica ocidental, segundo a qual a felicidade se mostra indissociavelmente ligada à
+
+optionA === presença de políticos com trajetórias no regime autoritário.
+
+optionB ===a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionC === consagração de relacionamentos afetivos.
+
+optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionE === detenção de lideranças populares por crimes de subversão.
+
+Answer === c
+numero >>>>>>>>>> 11
+
+img null
+===============
+
+Body === A afirmação a ponderação é hoje a mais desmoralizada das virtudes deve ser entendida, no contexto, como 
+
+optionA === detenção de lideranças populares por crimes de subversão.
+
+optionB ===uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionC === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionE === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+Answer === d
+numero >>>>>>>>>> 12
+
+img null
+===============
+
+Body === Sentimos que toda satisfação de nossos desejos advinda do mundo assemelha-se à esmola que mantém hoje o mendigo vivo, porém prolonga amanhã a sua fome. A resignação, ao contrário, assemelha-se à fortuna herdada: livra o herdeiro para sempre de todas as preocupações. SCHOPENHAUER, A. Aforismo para a sabedoria da vida. São Paulo: Martins Fontes, 2005. O trecho destaca uma ideia remanescente de uma tradição filosófica ocidental, segundo a qual a felicidade se mostra indissociavelmente ligada à
+
+optionA === presença de políticos com trajetórias no regime autoritário.
+
+optionB ===a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionC === consagração de relacionamentos afetivos.
+
+optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionE === detenção de lideranças populares por crimes de subversão.
+
+Answer === c
+numero >>>>>>>>>> 13
+
+img null
+===============
+
+Body === Sentimos que toda satisfação de nossos desejos advinda do mundo assemelha-se à esmola que mantém hoje o mendigo vivo, porém prolonga amanhã a sua fome. A resignação, ao contrário, assemelha-se à fortuna herdada: livra o herdeiro para sempre de todas as preocupações. SCHOPENHAUER, A. Aforismo para a sabedoria da vida. São Paulo: Martins Fontes, 2005. O trecho destaca uma ideia remanescente de uma tradição filosófica ocidental, segundo a qual a felicidade se mostra indissociavelmente ligada à
+
+optionA === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionB ===a valorização do discernimento público que permite distinguir, metaforicamente falando, um abacaxi de um pepino.
+
+optionC === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionD === presença de políticos com trajetórias no regime autoritário.
+
+optionE === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+Answer === a
+numero >>>>>>>>>> 14
+
+Image === 125492
+
+Body === Sentimos que toda satisfação de nossos desejos advinda do mundo assemelha-se à esmola que mantém hoje o mendigo vivo, porém prolonga amanhã a sua fome. A resignação, ao contrário, assemelha-se à fortuna herdada: livra o herdeiro para sempre de todas as preocupações. SCHOPENHAUER, A. Aforismo para a sabedoria da vida. São Paulo: Martins Fontes, 2005. O trecho destaca uma ideia remanescente de uma tradição filosófica ocidental, segundo a qual a felicidade se mostra indissociavelmente ligada à
+
+optionA === presença de políticos com trajetórias no regime autoritário.
+
+optionB ===a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionC === consagração de relacionamentos afetivos.
+
+optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionE === detenção de lideranças populares por crimes de subversão.
+
+Answer === c
+numero >>>>>>>>>> 15
+
+img null
+===============
+
+Body === Sentimos que toda satisfação de nossos desejos advinda do mundo assemelha-se à esmola que mantém hoje o mendigo vivo, porém prolonga amanhã a sua fome. A resignação, ao contrário, assemelha-se à fortuna herdada: livra o herdeiro para sempre de todas as preocupações. SCHOPENHAUER, A. Aforismo para a sabedoria da vida. São Paulo: Martins Fontes, 2005. O trecho destaca uma ideia remanescente de uma tradição filosófica ocidental, segundo a qual a felicidade se mostra indissociavelmente ligada à
+
+optionA === presença de políticos com trajetórias no regime autoritário.
+
+optionB ===a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionC === consagração de relacionamentos afetivos.
+
+optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionE === detenção de lideranças populares por crimes de subversão.
+
+Answer === c
+numero >>>>>>>>>> 16
+
+img null
+===============
+
+Body === Sentimos que toda satisfação de nossos desejos advinda do mundo assemelha-se à esmola que mantém hoje o mendigo vivo, porém prolonga amanhã a sua fome. A resignação, ao contrário, assemelha-se à fortuna herdada: livra o herdeiro para sempre de todas as preocupações. SCHOPENHAUER, A. Aforismo para a sabedoria da vida. São Paulo: Martins Fontes, 2005. O trecho destaca uma ideia remanescente de uma tradição filosófica ocidental, segundo a qual a felicidade se mostra indissociavelmente ligada à
+
+optionA === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionB ===a valorização do discernimento público que permite distinguir, metaforicamente falando, um abacaxi de um pepino.
+
+optionC === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionD === presença de políticos com trajetórias no regime autoritário.
+
+optionE === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+Answer === a
+numero >>>>>>>>>> 17
+
+Image === 125492
+
+Body === Sentimos que toda satisfação de nossos desejos advinda do mundo assemelha-se à esmola que mantém hoje o mendigo vivo, porém prolonga amanhã a sua fome. A resignação, ao contrário, assemelha-se à fortuna herdada: livra o herdeiro para sempre de todas as preocupações. SCHOPENHAUER, A. Aforismo para a sabedoria da vida. São Paulo: Martins Fontes, 2005. O trecho destaca uma ideia remanescente de uma tradição filosófica ocidental, segundo a qual a felicidade se mostra indissociavelmente ligada à
+
+optionA === presença de políticos com trajetórias no regime autoritário.
+
+optionB ===a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionC === consagração de relacionamentos afetivos.
+
+optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionE === detenção de lideranças populares por crimes de subversão.
+
+Answer === c
+numero >>>>>>>>>> 18
+
+img null
+===============
+
+Body === A afirmação a ponderação é hoje a mais desmoralizada das virtudes deve ser entendida, no contexto, como 
+
+optionA === detenção de lideranças populares por crimes de subversão.
+
+optionB ===uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionC === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionE === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+Answer === d
+numero >>>>>>>>>> 19
+
+img null
+===============
+
+Body === Sentimos que toda satisfação de nossos desejos advinda do mundo assemelha-se à esmola que mantém hoje o mendigo vivo, porém prolonga amanhã a sua fome. A resignação, ao contrário, assemelha-se à fortuna herdada: livra o herdeiro para sempre de todas as preocupações. SCHOPENHAUER, A. Aforismo para a sabedoria da vida. São Paulo: Martins Fontes, 2005. O trecho destaca uma ideia remanescente de uma tradição filosófica ocidental, segundo a qual a felicidade se mostra indissociavelmente ligada à
+
+optionA === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionB ===a valorização do discernimento público que permite distinguir, metaforicamente falando, um abacaxi de um pepino.
+
+optionC === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionD === presença de políticos com trajetórias no regime autoritário.
+
+optionE === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+Answer === a
+numero >>>>>>>>>> 20
+
+img null
+===============
+
+Body === A afirmação a ponderação é hoje a mais desmoralizada das virtudes deve ser entendida, no contexto, como 
+
+optionA === detenção de lideranças populares por crimes de subversão.
+
+optionB ===uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionC === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionE === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+Answer === d
+numero >>>>>>>>>> 21
+
+Image === 125492
+
+Body === LOL A afirmação a ponderação é hoje a mais desmoralizada das virtudes deve ser entendida, no contexto, como 
+
+optionA === detenção de lideranças populares por crimes de subversão.
+
+optionB ===uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionC === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+optionD === a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.
+
+optionE === uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.
+
+Answer === d
+numero >>>>>>>>>> 22
 
 img null
 ===============
