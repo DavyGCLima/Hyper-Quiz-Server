@@ -3,6 +3,8 @@ package Persistencia;
 import Persistencia.DaoProva;
 import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -141,9 +143,13 @@ public class JsonProvaFactory {
         }
     }
 
-    public static String cadastrarNovoUsuario(String nome, String emailC, String senhaC) {
+    public static String cadastrarNovoUsuario(String nome, String email, String senha,
+            String estado, String cidade, String sexo, String data) {
         try{
-            return DaoProva.cadastrarNovoUsuario(nome, emailC, senhaC);
+            SimpleDateFormat dt = new SimpleDateFormat("yyyy/MM/dd");
+            String newData = dt.format(new Date(data));
+            return DaoProva.cadastrarNovoUsuario(nome, email, senha, estado, cidade
+                ,sexo, newData.replace("/", "-"));
         }catch (Exception ex) {
             if(ex instanceof com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException ){
                 return "Usuário já existe";

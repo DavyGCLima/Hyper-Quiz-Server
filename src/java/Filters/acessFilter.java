@@ -12,6 +12,9 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Enumeration;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -19,6 +22,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.io.IOUtils;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -105,7 +111,9 @@ public class acessFilter implements Filter {
         
         doBeforeProcessing(request, response);
         HttpServletRequest req = (HttpServletRequest)request;
+        HttpServletResponse res = (HttpServletResponse)response;
         Throwable problem = null;
+        String cad = req.getHeader("tipo");
         try {
             // Make authentication from user
             
@@ -126,10 +134,17 @@ public class acessFilter implements Filter {
                     out.print(jsonToken);
                 }
                 
+            }else if(cad != null && cad.equals("cadastro")){
+                //System.out.println(req.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
+                //System.out.println(IOUtils.toString(req.getReader()));
+                cadastro(req, res);
             }else{
+                String js = IOUtils.toString(request.getReader());
+                JSONObject json = new JSONObject(js);
                 
-                String email = req.getHeader("email");
-                String senha = req.getHeader("senha");
+                String email = json.getString("email");
+                String senha = json.getString("senha");
+                
                 if(JsonProvaFactory.validarLogin(email, senha)){
                     JSONObject newJsonToken = AcessTokenControl.newToken(email, senha);
                     out.print(newJsonToken);
@@ -155,6 +170,29 @@ public class acessFilter implements Filter {
                 throw (IOException) problem;
             }
             sendProcessingError(problem, response);
+        }
+    }
+    
+    private void cadastro(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out;
+        try {
+            String js = IOUtils.toString(request.getReader());
+            JSONObject json = new JSONObject(js);
+            out = response.getWriter();
+            String email = json.getString("email");
+            String senha = json.getString("senha");
+            String nome = json.getString("nome");
+            String estado = json.getString("estado");
+            String cidade = json.getString("cidade");
+            String sexo = json.getString("sexo");
+            String data = json.getString("data");
+            String result = JsonProvaFactory.cadastrarNovoUsuario(nome, email, senha, estado
+                ,cidade, sexo, data);
+            out.print(result);
+        } catch (IOException ex) {
+            Logger.getLogger(acessFilter.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JSONException ex) {
+            Logger.getLogger(acessFilter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

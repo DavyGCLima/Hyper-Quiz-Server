@@ -167,15 +167,20 @@ public class DaoProva {
         return res;
     }
 
-    static String cadastrarNovoUsuario(String nome, String emailC, String senhaC) throws Exception {
+    static String cadastrarNovoUsuario(String nome, String email, String senha
+            ,String estado, String cidade, String sexo, String data) throws Exception {
         Connection conexao = Conexao.getConexao();
         conexao.setAutoCommit(false);
-        String sql = "INSERT INTO usuario(email, nome, senha) VALUES(?,?,?)";
+        String sql = "INSERT INTO usuario(email, Nome, senha, uf, cidade, gen, dataNasc) VALUES(?,?,?,?,?,?,?)";
         PreparedStatement ps;
         ps = conexao.prepareStatement(sql);
-        ps.setString(1, emailC);
+        ps.setString(1, email);
         ps.setString(2, nome);
-        ps.setString(3, senhaC);
+        ps.setString(3, senha);
+        ps.setString(4, estado);
+        ps.setString(5, cidade);
+        ps.setString(6, sexo);
+        ps.setString(7, data);
         int executeUpdate = ps.executeUpdate();
         conexao.commit();
         conexao.setAutoCommit(true);
