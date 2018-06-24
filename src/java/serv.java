@@ -1,3 +1,4 @@
+import Persistencia.DaoProva;
 import Persistencia.JsonProvaFactory;
 import org.json.*;
 import java.io.IOException;
@@ -46,9 +47,18 @@ public class serv extends HttpServlet {
                 case "getImageQuest":getImageQuest(request, response, out);break;
                 case "getDadosUsuario":getDadosUsuario(request, response, out);break;
                 case "atualizarEstatisticasUsuario":atualizaEstatisticasUsuario(request, response, out);break;
+                case "login":login(request, response, out);break;
             }
         }catch (JSONException ex) {
         Logger.getLogger(serv.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            if(ex.getMessage().equals("Dados não encontrados"))
+                try {
+                    out.print(new JSONObject().put("error", "Dados não encontrados"));
+            } catch (JSONException ex1) {
+                Logger.getLogger(serv.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            Logger.getLogger(serv.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -92,7 +102,7 @@ public class serv extends HttpServlet {
     }// </editor-fold>
 
     private void atualizaEstatisticasUsuario(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws IOException, JSONException {
-        String js = IOUtils.toString(request.getReader());
+        String js = IOUtils.toString(request.getInputStream(), "UTF-8");
         JSONObject json = new JSONObject(js);
         String acertos = json.getString("acertos");
         String erros = json.getString("erros");
@@ -112,7 +122,7 @@ public class serv extends HttpServlet {
     }
 
     private void getImageQuest(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws JSONException, IOException {
-        String js = IOUtils.toString(request.getReader());
+        String js = IOUtils.toString(request.getInputStream(), "UTF-8");
         JSONObject json = new JSONObject(js);
         String imgId = json.getString("imageId");
         JSONObject imagem = JsonProvaFactory.getImagem(imgId);
@@ -121,7 +131,7 @@ public class serv extends HttpServlet {
     }
 
     private void listarProvas(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws JSONException, IOException {
-        String js = IOUtils.toString(request.getReader());
+        String js = IOUtils.toString(request.getInputStream(), "UTF-8");
         JSONObject json = new JSONObject(js);
         String tipoProva = json.getString("tipoProva");
         JSONObject jsonListaProvas = JsonProvaFactory.getListaProvas(tipoProva);
@@ -136,12 +146,22 @@ public class serv extends HttpServlet {
     }
 
     private void buscarProva(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws IOException, JSONException {
-        String js = IOUtils.toString(request.getReader());
+        String js = IOUtils.toString(request.getInputStream(), "UTF-8");
         JSONObject json = new JSONObject(js);
         String idProva = json.getString("idProva");
         JSONObject jsonProva = JsonProvaFactory.getProva(idProva);
         out.print(jsonProva);
         System.out.println("buscarProva ===>"+jsonProva);
+    }
+
+    private void login(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws JSONException, IOException, Exception {
+        String js = IOUtils.toString(request.getInputStream(), "UTF-8");
+        JSONObject json = new JSONObject(js);
+        String token = request.getHeader("token");
+        JSONObject refreshToken = acessControl.AcessTokenControl.refreshToken(token);
+        String nome = DaoProva.getNomeUsuariio(json.getString("email"));
+        refreshToken.put("name", nome);
+        out.print(refreshToken);
     }
     
 }

@@ -140,7 +140,7 @@ public class DaoProva {
         return null;
     }
 
-    static String buscarImagemQuestao(String imageId)throws Exception {
+    public static String buscarImagemQuestao(String imageId)throws Exception {
         Connection conexao = Conexao.getConexao();
         String sql = "SELECT image FROM questoes WHERE idQuestoes = ?";
         PreparedStatement ps;
@@ -153,7 +153,7 @@ public class DaoProva {
         return result;
     }
 
-    static boolean validarLogin(String email, String senha)throws Exception {
+    public static boolean validarLogin(String email, String senha)throws Exception {
         Connection conexao = Conexao.getConexao();
         String sql = "SELECT EXISTS ( SELECT u.email, u.senha FROM usuario u WHERE u.email like ? and u.senha = ? ) as 'validacao'";
         PreparedStatement ps;
@@ -167,7 +167,7 @@ public class DaoProva {
         return res;
     }
 
-    static String cadastrarNovoUsuario(String nome, String email, String senha
+    public static String cadastrarNovoUsuario(String nome, String email, String senha
             ,String estado, String cidade, String sexo, String data) throws Exception {
         Connection conexao = Conexao.getConexao();
         conexao.setAutoCommit(false);
@@ -191,7 +191,7 @@ public class DaoProva {
             return "Não foi possivel realizar o cadastro";
     }
 
-    static String salvarDadosProva(String acertos, String erros, String email) throws SQLException, Exception {
+    public static String salvarDadosProva(String acertos, String erros, String email) throws SQLException, Exception {
         Connection conexao = Conexao.getConexao();
         conexao.setAutoCommit(false);
         
@@ -212,8 +212,29 @@ public class DaoProva {
         else
             return "Não foi possivel atualizar os dados do usuário com relação à prova";
     }
+    
+    public static String getNomeUsuariio(String email) throws SQLException, Exception{
+         Connection conexao = Conexao.getConexao();
+        conexao.setAutoCommit(false);
+        
+        String sql = "SELECT Nome FROM usuario WHERE email like ?";
+        
+        PreparedStatement ps;
+        ps = conexao.prepareStatement(sql);
+        ps.setString(1, email);
+        String retorno;
+        ResultSet executeQuery = ps.executeQuery();
+        if(executeQuery.first()){
+            retorno = executeQuery.getString(1);
+            conexao.close();
+            return retorno;
+        }else{
+            conexao.close();
+            throw new Exception("Dados não encontrados");
+        }
+    }
 
-    static String[] buscarDadosUsuario(String email) throws Exception {
+    public static String[] buscarDadosUsuario(String email) throws Exception {
         Connection conexao = Conexao.getConexao();
         conexao.setAutoCommit(false);
         

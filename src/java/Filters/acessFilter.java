@@ -127,11 +127,22 @@ public class acessFilter implements Filter {
             if(token != null){
                 
                 String result = AcessTokenControl.isValidToken(token);
-                if(result.equals("Token valido"))
+                if(result. equals("Token valido"))
                     chain.doFilter(request, response);
                 else if(result.equals("Token invalido")){
                     jsonToken = AcessTokenControl.refreshToken(token);
                     out.print(jsonToken);
+                }else if(result.equals("Token inexiste")){
+                    String js = IOUtils.toString(request.getReader());
+                    JSONObject json = new JSONObject(js);
+
+                    String email = json.getString("email");
+                    String senha = json.getString("senha");
+
+                    if(JsonProvaFactory.validarLogin(email, senha)){
+                        JSONObject newJsonToken = AcessTokenControl.newToken(email, senha);
+                        out.print(newJsonToken);
+                    }
                 }
                 
             }else if(cad != null && cad.equals("cadastro")){
@@ -176,7 +187,7 @@ public class acessFilter implements Filter {
     private void cadastro(HttpServletRequest request, HttpServletResponse response) {
         PrintWriter out;
         try {
-            String js = IOUtils.toString(request.getReader());
+            String js = IOUtils.toString(request.getInputStream(), "UTF-8");
             JSONObject json = new JSONObject(js);
             out = response.getWriter();
             String email = json.getString("email");

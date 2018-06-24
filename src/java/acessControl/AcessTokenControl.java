@@ -27,17 +27,15 @@ public class AcessTokenControl {
     }
 
     public static JSONObject refreshToken(String token) throws Exception {
-        String newToken = randomString.nextString();
         Connection con = Conexao.getConexao();
-        String sql = "update autenticacao set token = ?, dataExpira = now(), dataRefresh = now()"
+        String sql = "update autenticacao set dataExpira = now(), dataRefresh = now()"
                 + "where token = ?";
         PreparedStatement sp = con.prepareStatement(sql);
-        sp.setString(1, newToken);
-        sp.setString(2, token);
+        sp.setString(1, token);
         int executeUpdate = sp.executeUpdate();
         if(executeUpdate == 1){
             JSONObject json = new JSONObject();
-            json.put("newToken", newToken);
+            json.put("token", token);
             return json;
         }
         else 
@@ -48,12 +46,13 @@ public class AcessTokenControl {
         String token = randomString.nextString();
         Connection con = Conexao.getConexao();
         
-        String sqlSelect = "select idUsuario from usuario where email = ?";
+        String sqlSelect = "select idUsuario, Nome from usuario where email = ?";
         PreparedStatement sp = con.prepareStatement(sqlSelect);
         sp.setString(1, email);
         ResultSet rs = sp.executeQuery();
         rs.first();
         String id = rs.getString("idUsuario");
+        String nome = rs.getString("Nome");
         
         String sqlInsert = "insert into autenticacao set idUsuario = ?, "
                 + "token = ?, dataExpira = now()";
@@ -65,8 +64,9 @@ public class AcessTokenControl {
         System.out.println("NEWTOKEN: "+token + "usuario: "+id);
         
         if(result == 1){
-           JSONObject json = new JSONObject();
-           json.put("token", token);
+            JSONObject json = new JSONObject();
+            json.put("token", token);
+            json.put("name", nome);
            return json;
         }else
             throw new ExecutionException("SQL insert failed", new Exception("Canot execute insert"));
