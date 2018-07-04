@@ -97,11 +97,11 @@ public class JsonProvaFactory {
      * @param idProva
      * @return JSONObject conendo a prova
      */
-    public static JSONObject getProva(String idProva){
+    public static JSONObject getProva(String tipoProva){
         JSONObject json = new JSONObject();
         try {
-            List<Prova.Questao> questoes = DaoProva.buscarQuestoesProva(Integer.valueOf(idProva));
-            List dados = DaoProva.buscarDadosProva(Integer.valueOf(idProva));
+            List<Prova.Questao> questoes = DaoProva.buscarQuestoesProva(tipoProva);
+            List dados = DaoProva.buscarDadosProva(tipoProva);
             if(questoes != null && questoes.size() > 0 && dados != null && dados.size() > 0){
                 json.put("name", dados.get(1));
                 json.put("numQuests", dados.get(2));
@@ -148,6 +148,7 @@ public class JsonProvaFactory {
         try{
             SimpleDateFormat dt = new SimpleDateFormat("yyyy/MM/dd");
             String newData = dt.format(new Date(data));
+            
             return DaoProva.cadastrarNovoUsuario(nome, email, senha, estado, cidade
                 ,sexo, newData.replace("/", "-"));
         }catch (Exception ex) {
@@ -188,7 +189,29 @@ public class JsonProvaFactory {
             }
             return json;
         }
-        
+    }
+    
+    public static void updateHistory(String acerto, String email){
+        try {
+            DaoProva.updateHistory(Integer.valueOf(acerto), email);
+        } catch (Exception ex) {
+            Logger.getLogger(JsonProvaFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static JSONObject getHistorico(String email) {
+        JSONObject json = new JSONObject();
+        try{
+            String[] dados = DaoProva.getHistorico(email);
+            json.put("1", dados[0]);
+            json.put("2", dados[1]);
+            json.put("3", dados[2]);
+            json.put("4", dados[3]);
+            json.put("5", dados[4]);
+            return json;
+        }catch(Exception e){
+        }
+        return null;
     }
     
 }

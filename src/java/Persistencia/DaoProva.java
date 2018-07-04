@@ -2,12 +2,14 @@ package Persistencia;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
   Classe de pércistência de provas
@@ -43,42 +45,39 @@ public class DaoProva {
    
     /**
      * Busca na base de dados as questões que compoem uma prova
-     * @param provaId identificador da base de dados para a referente prova
+     * @param nomeProva identificador da base de dados para a referente prova
      * @return Lista contendo todas as questões da prova
      * @throws SQLException
      * @throws Exception 
      */
-    public static List<Prova.Questao> buscarQuestoesProva(int provaId) throws SQLException, Exception{
+    public static List<Prova.Questao> buscarQuestoesProva(String nomeProva) throws SQLException, Exception{
         Connection conexao = Conexao.getConexao();
         
-        String sql = "SELECT * FROM Questoes WHERE idProva = ?";
+        String sql = "SELECT * FROM Questoes q join prova p where q.idProva = "
+                + "p.idProva and p.Nome like ?";
         
         PreparedStatement ps;
         ps = conexao.prepareStatement(sql);
-        ps.setInt(1, provaId);
+        ps.setString(1, nomeProva);
         ResultSet resultSet = ps.executeQuery();
-        FileWriter arq = new FileWriter("D:\\Projetos Android\\webServiceIc\\resultset.txt");
-        PrintWriter grava = new PrintWriter(arq);
         List<Prova.Questao> quest = new ArrayList<>();
         while(resultSet.next()){
             Prova.Questao q = new Prova.Questao();
-            q.setBody(resultSet.getString("body")); grava.println("Body === "+resultSet.getString("body"));grava.println();
-            q.setOptionA(resultSet.getString("optionA"));grava.println("optionA === "+resultSet.getString("optionA"));grava.println();
-            q.setOptionB(resultSet.getString("optionB"));grava.println("optionB ==="+resultSet.getString("optionB"));grava.println();
-            q.setOptionC(resultSet.getString("optionC"));grava.println("optionC === "+resultSet.getString("optionC"));grava.println();
-            q.setOptionD(resultSet.getString("optionD"));grava.println("optionD === "+resultSet.getString("optionD"));grava.println();
-            q.setOptionE(resultSet.getString("optionE"));grava.println("optionE === "+resultSet.getString("optionE"));grava.println();
-            q.setAnswer(resultSet.getString("answer"));grava.printf("Answer === "+resultSet.getString("answer"));grava.println();
-            grava.println("numero >>>>>>>>>> "+resultSet.getString("numero"));grava.println();
+            q.setBody(resultSet.getString("body"));
+            q.setOptionA(resultSet.getString("optionA"));
+            q.setOptionB(resultSet.getString("optionB"));
+            q.setOptionC(resultSet.getString("optionC"));
+            q.setOptionD(resultSet.getString("optionD"));
+            q.setOptionE(resultSet.getString("optionE"));
+            q.setAnswer(resultSet.getString("answer"));
             if(resultSet.getString("image") != null){
-                String imgId = resultSet.getString("idQuestoes");grava.println("Image === "+resultSet.getString("image").length());grava.println();
+                String imgId = resultSet.getString("idQuestoes");
                 q.setImage(imgId);
             }else{
-                q.setImage("");grava.println("img null");grava.println("===============");grava.println();
+                q.setImage("");
             }
             quest.add(q);
         }
-        arq.close();
         ps.close();
         conexao.close();
         return quest;
@@ -120,12 +119,12 @@ public class DaoProva {
      * dos id's das imagens
      * @throws Exception 
      */
-    public static List buscarDadosProva(int idProva) throws Exception{
+    public static List buscarDadosProva(String tipoProva) throws Exception{
         Connection conexao = Conexao.getConexao();
-        String sql = "SELECT idProva, Nome, QtdQuestoes, idProva FROM prova WHERE idProva = ?";
+        String sql = "SELECT idProva, Nome, QtdQuestoes, idProva FROM prova WHERE Nome like ?";
         PreparedStatement ps;
         ps = conexao.prepareStatement(sql);
-        ps.setInt(1, idProva);
+        ps.setString(1, tipoProva);
         ResultSet rs = ps.executeQuery();
         List lista = new ArrayList();
         if(rs.next()){
@@ -185,9 +184,10 @@ public class DaoProva {
         conexao.commit();
         conexao.setAutoCommit(true);
         conexao.close();
-        if(executeUpdate == 1)
+        if(executeUpdate == 1){
+            newHistory(email);
             return "Cadastrado";
-        else
+        }else
             return "Não foi possivel realizar o cadastro";
     }
 
@@ -254,6 +254,51 @@ public class DaoProva {
             conexao.close();
             throw new Exception("Dados não encontrados");
         }
-        
     }
+        
+    public static void newHistory(String email) throws Exception {
+        String sql = "insert into historico_acertos (idUsuario) select u.idUsuario"
+                + " from usuario u where u.email like ? ";
+        PreparedStatement sp = Conexao.getConexao().prepareStatement(sql);
+        sp.setString(1, email);
+        int exup = sp.executeUpdate();
+        if(exup != 1)
+            throw new ExecutionException("Impossivel criar historico", new Exception("Canot execute insert"));
+    }
+
+    public static void updateHistory(int acertos, String email) throws Exception{
+        String sql = "select idUsuario from usuario where email like ?";
+        PreparedStatement ps = Conexao.getConexao().prepareStatement(sql);
+        ps.setString(1, email);
+        ResultSet executeQuery = ps.executeQuery();
+        String idUsuario = executeQuery.getString("idUsuario");
+        String sql2 = "call updateHistory(?,?)";
+        CallableStatement prepareCall = Conexao.getConexao().prepareCall(sql2);
+        prepareCall.setInt(1, acertos);
+        prepareCall.setInt(2, Integer.valueOf(idUsuario));
+        ResultSet rs = prepareCall.executeQuery();
+        prepareCall.close();
+        executeQuery.close();
+   }
+
+    static String[] getHistorico(String email) throws Exception {
+        String sql = "select h.teste1, h.teste2, h.teste3, h.teste4, h.teste5 "
+                + "from historico_acertos h where h.idUsuario = (select u.idUsuario "
+                + "from usuario u where u.email like ? )";
+        PreparedStatement sp = Conexao.getConexao().prepareStatement(sql);
+        sp.setString(1, email);
+        ResultSet exq = sp.executeQuery();
+        if(exq.first()){
+            String[] res = new String[5];
+            res[0] = exq.getString("teste1");
+            res[1] = exq.getString("teste2");
+            res[2] = exq.getString("teste3");
+            res[3] = exq.getString("teste4");
+            res[4] = exq.getString("teste5");
+            
+            return res;
+        }
+        return null;
+    }
+    
 }

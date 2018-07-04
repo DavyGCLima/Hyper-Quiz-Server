@@ -123,7 +123,7 @@ public class acessFilter implements Filter {
             String token = req.getHeader("token");
             JSONObject jsonToken;
             PrintWriter out = response.getWriter();
-            
+            System.out.println("Token >>> "+token);
             if(token != null){
                 
                 String result = AcessTokenControl.isValidToken(token);
@@ -158,6 +158,7 @@ public class acessFilter implements Filter {
                 
                 if(JsonProvaFactory.validarLogin(email, senha)){
                     JSONObject newJsonToken = AcessTokenControl.newToken(email, senha);
+                    System.out.println("newtoken >>> "+newJsonToken);
                     out.print(newJsonToken);
                 }
             }
@@ -199,10 +200,13 @@ public class acessFilter implements Filter {
             String data = json.getString("data");
             String result = JsonProvaFactory.cadastrarNovoUsuario(nome, email, senha, estado
                 ,cidade, sexo, data);
+            
             out.print(result);
         } catch (IOException ex) {
             Logger.getLogger(acessFilter.class.getName()).log(Level.SEVERE, null, ex);
         } catch (JSONException ex) {
+            Logger.getLogger(acessFilter.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(acessFilter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

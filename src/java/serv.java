@@ -48,6 +48,7 @@ public class serv extends HttpServlet {
                 case "getDadosUsuario":getDadosUsuario(request, response, out);break;
                 case "atualizarEstatisticasUsuario":atualizaEstatisticasUsuario(request, response, out);break;
                 case "login":login(request, response, out);break;
+                case "listarHistorico":getHistorico(request, response, out);break;
             }
         }catch (JSONException ex) {
         Logger.getLogger(serv.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,18 +107,17 @@ public class serv extends HttpServlet {
         JSONObject json = new JSONObject(js);
         String acertos = json.getString("acertos");
         String erros = json.getString("erros");
-        String emailAt = json.getString("email");
-        String resultAt = JsonProvaFactory.salvarDadosProva(acertos, erros, emailAt);
-        out.print(resultAt);
+        String email = json.getString("email");
+        String result = JsonProvaFactory.salvarDadosProva(acertos, erros, email);
+        updateHistory(acertos, email);
+        out.print(result);
     }
 
     private void getDadosUsuario(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws JSONException, IOException {
         String js = IOUtils.toString(request.getReader());
-        System.out.println(">>>>>>> "+js);
         JSONObject json = new JSONObject(js);
         String email = json.getString("email");
         JSONObject jsonDataUser = JsonProvaFactory.getUserData(email);
-        System.out.println("DATAUSER "+email+" data:"+jsonDataUser);
         out.print(jsonDataUser);
     }
 
@@ -127,7 +127,6 @@ public class serv extends HttpServlet {
         String imgId = json.getString("imageId");
         JSONObject imagem = JsonProvaFactory.getImagem(imgId);
         out.print(imagem);
-        System.out.println("imagem ===>"+imagem);
     }
 
     private void listarProvas(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws JSONException, IOException {
@@ -136,22 +135,19 @@ public class serv extends HttpServlet {
         String tipoProva = json.getString("tipoProva");
         JSONObject jsonListaProvas = JsonProvaFactory.getListaProvas(tipoProva);
         out.print(jsonListaProvas);
-        System.out.println("listarProvas ===>"+jsonListaProvas);
     }
 
     private void listar(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws JSONException, IOException {
         JSONObject jsonTipoProva = JsonProvaFactory.jsonTipoProva();
         out.print(jsonTipoProva);
-        System.out.println("listar ===>"+jsonTipoProva);
     }
 
     private void buscarProva(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws IOException, JSONException {
         String js = IOUtils.toString(request.getInputStream(), "UTF-8");
         JSONObject json = new JSONObject(js);
-        String idProva = json.getString("idProva");
-        JSONObject jsonProva = JsonProvaFactory.getProva(idProva);
+        String tipoProva = json.getString("tipoProva");
+        JSONObject jsonProva = JsonProvaFactory.getProva(tipoProva);
         out.print(jsonProva);
-        System.out.println("buscarProva ===>"+jsonProva);
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws JSONException, IOException, Exception {
@@ -162,6 +158,18 @@ public class serv extends HttpServlet {
         String nome = DaoProva.getNomeUsuariio(json.getString("email"));
         refreshToken.put("name", nome);
         out.print(refreshToken);
+    }
+
+    private void updateHistory(String acertos, String email) throws IOException, JSONException {
+        JsonProvaFactory.updateHistory(acertos, email);
+    }
+
+    private void getHistorico(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws IOException, JSONException {
+        String js = IOUtils.toString(request.getInputStream(), "UTF-8");
+        JSONObject json = new JSONObject(js);
+        String email = json.getString("email");
+        JSONObject retorno = JsonProvaFactory.getHistorico(email);
+        out.print(retorno);
     }
     
 }

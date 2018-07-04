@@ -22,6 +22,7 @@ public class AcessTokenControl {
         ResultSet result = call.executeQuery();
         result.first();
         String r = result.getString("result");
+        call.close();
         System.out.println(" isValidToken Result: "+r);
         return r;
     }
@@ -29,16 +30,27 @@ public class AcessTokenControl {
     public static JSONObject refreshToken(String token) throws Exception {
         Connection con = Conexao.getConexao();
         String sql = "update autenticacao set dataExpira = now(), dataRefresh = now()"
-                + "where token = ?";
+                + "where token like ?";
         PreparedStatement sp = con.prepareStatement(sql);
         sp.setString(1, token);
         int executeUpdate = sp.executeUpdate();
         if(executeUpdate == 1){
             JSONObject json = new JSONObject();
             json.put("token", token);
+            String sql2 = "select u.Nome from usuario u join autenticacao a on "
+                    + "u.idUsuario = a.idUsuario where a.Token like ? ";
+            PreparedStatement sp2 = con.prepareStatement(sql2);
+            sp2.setString(1, token);
+            ResultSet exq = sp2.executeQuery();
+            exq.first();
+            String nome = exq.getString(1);
+            json.put("name", nome);
+            sp2.close();
+            sp.close();
             return json;
         }
         else 
+            sp.close();
             throw new ExecutionException("SQL update failed", new Exception("Canot execute update"));
     }
 
@@ -60,7 +72,7 @@ public class AcessTokenControl {
         sp.setString(1, id);
         sp.setString(2, token);
         int result = sp.executeUpdate();
-        
+        sp.close();
         System.out.println("NEWTOKEN: "+token + "usuario: "+id);
         
         if(result == 1){
@@ -72,7 +84,5 @@ public class AcessTokenControl {
             throw new ExecutionException("SQL insert failed", new Exception("Canot execute insert"));
         
     }
-   
+
 }
-
-
